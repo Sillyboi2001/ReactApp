@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css'
 import { Form2 } from './components/forms/input';
+import Header from './components/homepage/header';
 
 const Signup = () => {
     return (
         <div className="App">
-            <div class="header">
-                <header>E-LIBRARY</header>
-            </div>
+            <Header/>
             <div class="form">
                 <Form2 />
             </div>

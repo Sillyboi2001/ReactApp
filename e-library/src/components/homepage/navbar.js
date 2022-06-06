@@ -5,7 +5,7 @@ class Navbar extends Component {
     render() {
         return(
             <div class="container">
-                <div class="head">E-LIBRARY</div>
+                <header class="head">E-LIBRARY</header>
                 <div class="search"><input type="text" placeholder="Search..."/></div>
                 <div class="dropdown">
                     <button class="dropbtn">Silasmanas</button>

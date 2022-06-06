@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Button from "../button/button";
 
 class Body extends Component {
     render() {
@@ -10,33 +11,23 @@ class Body extends Component {
                 </div>
                 <div class="img">
                     <img src="../images/download (1).jpg" alt="" />
-                    <div>
-                        <button>BORROW</button>
-                    </div>
+                    <Button />
                 </div>
                 <div class="img">
                     <img src="../images/download (2).jpg" alt="" />
-                    <div>
-                        <button>BORROW</button>
-                    </div>
+                    <Button />
                 </div>
                 <div class="img">
                     <img src="../images/download (3).jpg" alt="" />
-                    <div>
-                        <button>BORROW</button>
-                    </div>
+                    <Button />
                 </div>
                 <div class="img">
                     <img src="../images/download (4).jpg" alt="" />
-                    <div>
-                        <button>OUT OF STOCK</button>
-                    </div>
+                    <Button />
                 </div>
                 <div class="img">
                     <img src="../images/download.jpg" alt="" />
-                    <div>
-                        <button>BORROW</button>
-                    </div>
+                    <Button />
                 </div>
             </div><div class="container1">
                     <div class="row">
@@ -44,33 +35,23 @@ class Body extends Component {
                     </div>
                     <div class="img">
                         <img src="../images/download (5).jpg" alt="" />
-                        <div>
-                            <button>BORROW</button>
-                        </div>
+                        <Button />
                     </div>
                     <div class="img">
                         <img src="../images/download (8).jpg" alt="" />
-                        <div>
-                            <button>BORROW</button>
-                        </div>
+                        <Button />
                     </div>
                     <div class="img">
                         <img src="../images/download (10).jpg" alt="" />
-                        <div>
-                            <button>BORROW</button>
-                        </div>
+                        <Button />
                     </div>
                     <div class="img">
                         <img src="../images/download (7).jpg" alt="" />
-                        <div>
-                            <button>OUT OF STOCK</button>
-                        </div>
+                        <Button />
                     </div>
                     <div class="img">
                         <img src="../images/84105002-256-k764841.jpg" alt="" />
-                        <div>
-                            <button>BORROW</button>
-                        </div>
+                        <Button />
                     </div>
                 </div></>
         )
