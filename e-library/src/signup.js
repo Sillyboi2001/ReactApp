@@ -7,7 +7,7 @@ const Signup = () => {
     return (
         <div className="App">
             <Header/>
-            <div class="form">
+            <div className="form">
                 <Form2 />
             </div>
         </div>
