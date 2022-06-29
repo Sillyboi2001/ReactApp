@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../button/button";
-
-function Body() {
+import Images from '../images/images'
+const Body = () => {
     return(
         <><div class="container1">
             <div class="row">
@@ -9,23 +9,23 @@ function Body() {
                 <div>Interesting books for young ones</div>
             </div>
             <div class="img">
-                <img src="../images/download (1).jpg" alt="" />
+                <Images />
                 <Button />
             </div>
             <div class="img">
-                <img src="../images/download (2).jpg" alt="" />
+                <Images />
                 <Button />
             </div>
             <div class="img">
-                <img src="../images/download (3).jpg" alt="" />
+                <Images />
                 <Button />
             </div>
             <div class="img">
-                <img src="../images/download (4).jpg" alt="" />
+                <Images />
                 <Button />
             </div>
             <div class="img">
-                <img src="../images/download.jpg" alt="" />
+                <Images />
                 <Button />
             </div>
         </div><div class="container1">

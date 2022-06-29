@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, Outlet } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api/axios';
+
+export const token = {};
 
 export const Form = () => {   
     const userRef = useRef()
@@ -22,11 +24,13 @@ export const Form = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:4000/api/users/signin', {email, password});
-            console.log(JSON.stringify(response.data))
+         const response = await axios.post('/api/users/signin', {email, password});
             setEmail('');
             setPassword('')
             setSuccess(true)
+            token.id = response.data.token
+            token.username = response.data.username
+            localStorage.setItem('user-info', JSON.stringify(response.data))
         } catch (err ) {
             if (err.response.status === 400) {setErrMessage('User input required')}
             else if (err.response.status === 404) {setErrMessage('Invalid credentials')}
@@ -52,11 +56,11 @@ export const Form = () => {
                 <h2>Sign in</h2>
                 <div className="input-box">
                     <i className="fas fa-envelope" aria-hidden="true"></i>
-                    <input type="email" ref={userRef} value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" ref={userRef} value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div className="input-box">
                     <i className="fa fa-unlock-alt" aria-hidden="true"></i>
-                    <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} required/>
                 </div>
                 <div className="input-box">
                     <input type="submit" name="" value="Login"/>
@@ -87,7 +91,7 @@ export const Form2 = () => {
     const signUp  = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:4000/api/users/signup', {
+            const response = await axios.post('/api/users/signup', {
             username,
             email,
             password})

@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
-import { Form } from './components/forms/input';
+import './Components/scss/App.scss';
+import { Form } from './Components/forms/input';
 
 const Signin = () => {
   return (

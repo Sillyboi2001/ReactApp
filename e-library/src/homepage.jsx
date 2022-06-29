@@ -1,6 +1,5 @@
-import Body from "./components/homepage/body";
-import Navbar from "./components/homepage/navbar";
-import './homepage.css';
+import Body from "./Components/homepage/body";
+import Navbar from "./Components/homepage/navbar";
 
 const Homepage = () => {
     return (
