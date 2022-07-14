@@ -1,0 +1,130 @@
+body{
+    font-family: sans-serif;
+  }
+  .container{
+      font-family: sans-serif;
+      font-weight: bold;
+      display: flex;
+      padding: 20px;
+      flex-wrap: wrap;
+      flex-wrap: wrap;
+      position: sticky;
+      justify-content: space-evenly;
+      right: 0;
+      left: 0;
+      top: 0;
+      z-index: 200;
+      background-color: #fff;
+      box-shadow: 0 15px 50px rgba(0,0,0,.5);
+  }
+  .head{
+      color: #777;
+      text-align: center;
+      font-size: 20px;
+      flex-grow: 1;
+      padding: 10px;
+  }
+  .search{
+      flex-grow: 3;
+      .search {
+        width: 75%;
+        position: relative;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: white;
+        background-image: url('https://www.w3schools.com/css/searchicon.png');
+        background-position: 10px 10px; 
+        background-repeat: no-repeat;
+        padding:12px 20px 12px 40px;
+    }
+  }
+  .language{
+      flex-grow: 1;
+      padding: 10px;
+  }
+  .premium{
+      background-color: darkblue;
+      color: white;
+      padding: 10px;
+      border:1px solid darkblue;
+      border-radius: 45px;
+      margin-right: 70px;
+  }
+  .title{
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      padding: 10px;
+  }
+  .end{
+      text-align: center;
+  }
+  select {
+      border: none;
+    }
+  .container1{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 45px;
+      img{
+        width: 200px;
+        height: 300px;
+     }  
+     .img{
+      button {
+        background: gray;
+        border: 0;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+        }
+     } 
+  }
+  .img{
+      flex: 0 0 200px;
+      margin: 10px;
+      border: 1px solid black;
+  }
+  .dropbtn {
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: none;
+  }
+  
+  .dropdown {
+    flex: 1;
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown:hover{
+    .dropdown-content {
+      display: block;
+    }
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    a:hover {background-color: #f1f1f1;
+    }
+  }
+  .container1 header{
+      flex: 1 0 0;
+      padding: 15px;
+  }
+  .row{
+    flex: 100%;
+    margin-left: 70px;
+  }
