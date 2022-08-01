@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "../api/axios";
 import formData from 'form-data'
-import { token } from './input';
+import { userInfo } from "../homepage/body";
 
-const CreateBook = () => {;
+export const bookData = {};
+
+export const CreateBook = () => {;
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('')
     const [author, setAuthor] = useState('');
@@ -25,7 +27,7 @@ const CreateBook = () => {;
             const response = await axios.post('/api/books', form, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'authorization': token.id
+                    'authorization': userInfo.token,
                 }
             });
             setTitle('');
@@ -35,7 +37,8 @@ const CreateBook = () => {;
             setDescription('');
             window.alert('Book has been created successfully')
             redirect('/homepage')
-            console.log(response.data)
+            bookData.img = response.data.createbook.imageUrl
+            bookData.file = response.data.createbook.fileUrl
         } catch (err){
               if (err) {
                   window.alert('Failed to create book. Please try again')
@@ -56,7 +59,7 @@ const CreateBook = () => {;
                         </div><div className="input-box">
                             <input type="text" placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)} />
                         </div><div className="input-box">
-                            <input type="file" onChange={(e) => setFileUrl(e.target.files[0])} />
+                            <input type="file" onChange={(e) => setFileUrl(e.target.files[0])} required/>
                         </div><div className="input-box">
                             <input type="submit" value="Create your book" />
                         </div>
@@ -65,5 +68,3 @@ const CreateBook = () => {;
             </>
         )    
 }
-
-export default CreateBook

@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, Outlet } from 'react-router-dom';
 import axios from '../api/axios';
 
-export const token = {};
-
 export const Form = () => {   
     const userRef = useRef()
     const errRef = useRef()
@@ -12,7 +10,6 @@ export const Form = () => {
     const [password, setPassword] = useState('')
     const [errMessage, setErrMessage] = useState('')
     const [success, setSuccess] = useState(false)
-
     useEffect(() => {
         userRef.current.focus();
     }, [])
@@ -28,8 +25,6 @@ export const Form = () => {
             setEmail('');
             setPassword('')
             setSuccess(true)
-            token.id = response.data.token
-            token.username = response.data.username
             localStorage.setItem('user-info', JSON.stringify(response.data))
         } catch (err ) {
             if (err.response.status === 400) {setErrMessage('User input required')}
@@ -99,7 +94,7 @@ export const Form2 = () => {
             setEmail('')
             setPassword('')
             setSuccess(true)
-            localStorage.setItem('user-info', JSON.stringify(response.data.token))
+            localStorage.setItem('user-info', JSON.stringify(response.data))
         } catch (err) {
             if (err.response.status === 409) {
                 setErrMessage('User Already Exist. Please Login')
