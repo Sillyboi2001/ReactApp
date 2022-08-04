@@ -6,13 +6,11 @@ export const Form = () => {
     const userRef = useRef()
     const errRef = useRef()
 
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [errMessage, setErrMessage] = useState('')
     const [success, setSuccess] = useState(false)
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
 
     useEffect(() => {
         setErrMessage('');

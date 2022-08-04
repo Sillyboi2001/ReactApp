@@ -6,23 +6,25 @@ import { userInfo } from "../homepage/body";
 
 export const bookData = {};
 
-export const CreateBook = () => {;
-    const [title, setTitle] = useState('');
-    const [price, setPrice] = useState('')
-    const [author, setAuthor] = useState('');
-    const [fileUrl, setFileUrl] = useState(null)
-    const [description, setDescription] = useState('')
+export const CreateBook = () => {
+    const [book, setBook] = useState({
+        title: '',
+        price: '',
+        author: '',
+        description: '',
+        fileUrl: '',
+    })
 
     const redirect = useNavigate()
 
     const submit = async (e) => {
         e.preventDefault()
         const form = new formData()
-        form.append('title', title)
-        form.append('price', price)
-        form.append('author', author)
-        form.append('description', description)
-        form.append('bookFile', fileUrl)
+        form.append('title', book.title)
+        form.append('price', book.price)
+        form.append('author', book.author)
+        form.append('description', book.description)
+        form.append('bookFile', book.fileUrl)
         try {
             const response = await axios.post('/api/books', form, {
                 headers: {
@@ -30,11 +32,11 @@ export const CreateBook = () => {;
                     'authorization': userInfo.token,
                 }
             });
-            setTitle('');
-            setPrice('');
-            setFileUrl('');
-            setAuthor('');
-            setDescription('');
+            setBook({ title: ''});
+            setBook({ price: ''});
+            setBook({ author: ''});
+            setBook({ fileUrl: ''});
+            setBook({ description: ''})
             window.alert('Book has been created successfully')
             redirect('/homepage')
             bookData.img = response.data.createbook.imageUrl
@@ -43,6 +45,7 @@ export const CreateBook = () => {;
               if (err) {
                   window.alert('Failed to create book. Please try again')
                   redirect('/homepage')
+                  console.log(err)
             }
         }
     }
@@ -51,15 +54,15 @@ export const CreateBook = () => {;
                <div> 
                     <form onSubmit={submit}>
                         <h2>Create your book</h2><div className="input-box">
-                            <input type="text" value={title} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
+                            <input type="text" value={book.title} placeholder="Title" onChange={(e) => setBook({ ...book, title: e.target.value})} />
                         </div><div className="input-box">
-                            <textarea placeholder="Description" value={description} rows="4" columns="50" onChange={(e) => setDescription(e.target.value)}></textarea>
+                            <textarea placeholder="Description" value={book.description} rows="4" columns="50" onChange={(e) => setBook({ ...book, description: e.target.value})}></textarea>
                         </div><div className="input-box">
-                            <input type="text" placeholder="Author" value={author} onChange={(e) => setAuthor(e.target.value)} />
+                            <input type="text" placeholder="Author" value={book.author} onChange={(e) => setBook({ ...book, author: e.target.value})} />
                         </div><div className="input-box">
-                            <input type="text" placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)} />
+                            <input type="text" placeholder="Price" value={book.price} onChange={(e) => setBook({ ...book, price: e.target.value})} />
                         </div><div className="input-box">
-                            <input type="file" onChange={(e) => setFileUrl(e.target.files[0])} required/>
+                            <input type="file" onChange={(e) => setBook({...book, fileUrl: e.target.files[0]})} required />
                         </div><div className="input-box">
                             <input type="submit" value="Create your book" />
                         </div>
