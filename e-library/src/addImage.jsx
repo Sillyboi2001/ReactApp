@@ -1,17 +1,17 @@
 import React from 'react';
 import './Components/scss/App.scss';
-import { CreateBook } from './Components/forms/createbook';
+import Images from './Components/images/images';
 
-function AddBook() {
+function AddImage() {
   return (
     <div className="App">
       <div className="header">
         <header>E-LIBRARY</header>
       </div>
       <div className="form">
-        <CreateBook />
+        <Images />
       </div>
     </div>
   );
 }
-export default AddBook;
+export default AddImage;
