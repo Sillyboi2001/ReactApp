@@ -56,7 +56,7 @@ export function Form() {
             <div className="input-box">
               <input type="submit" name="" value="Login" />
             </div>
-            <Link to="/signup">Don't have an account? Sign up</Link>
+            <Link to="/signup">Don&apos;t have an account? Sign up</Link>
             <Link to="#forgetPassword">Forget password?</Link>
           </form>
           <Outlet />
@@ -103,6 +103,7 @@ export function Form2() {
   };
 
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {success ? (
         <div>

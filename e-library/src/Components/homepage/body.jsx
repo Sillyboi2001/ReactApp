@@ -18,9 +18,9 @@ function Body() {
             authorization: userInfo.token,
           },
         });
-        setBook(response.data.books);
+        return setBook(response.data.books);
       } catch (err) {
-        console.log(err);
+        return err;
       }
     };
     getBooks();

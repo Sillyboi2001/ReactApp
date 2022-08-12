@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 export const counterSlice = createSlice({
@@ -13,11 +14,11 @@ export const counterSlice = createSlice({
     credentials: (state, action) => {
       state.token = action.payload;
     },
-    logOut: (state, action) => {
+    logOut: (state) => {
       state.username = null;
       state.token = null;
-    }
-  }
+    },
+  },
 });
 
 export const { username, credentials, logOut } = counterSlice.actions;
