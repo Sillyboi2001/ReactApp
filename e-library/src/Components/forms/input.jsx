@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import axios from '../api/axios';
 
-export function Form() {
+export const Form = () => {
   const userRef = useRef();
   const errRef = useRef();
 
@@ -24,7 +24,11 @@ export function Form() {
       setSuccess(true);
       localStorage.setItem('user-info', JSON.stringify(response.data));
     } catch (err) {
-      if (err.response.status === 400) { setErrMessage('User input required'); } else if (err.response.status === 404) { setErrMessage('Invalid credentials'); } else {
+      if (err.response.status === 400) {
+        setErrMessage('User input required');
+      } else if (err.response.status === 404) {
+        setErrMessage('Invalid credentials');
+      } else {
         setErrMessage("User doesn't exist. Please signup");
       }
     }
@@ -64,9 +68,9 @@ export function Form() {
       )}
     </>
   );
-}
+};
 
-export function Form2() {
+export const Form2 = () => {
   const errRef = useRef();
 
   const [username, setUsername] = useState('');
@@ -134,4 +138,4 @@ export function Form2() {
       )}
     </>
   );
-}
+};

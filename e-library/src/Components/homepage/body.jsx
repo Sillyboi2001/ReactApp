@@ -5,7 +5,7 @@ import { getbooks } from '../../counter/bookReducer';
 
 export const userInfo = JSON.parse(localStorage.getItem('user-info'));
 
-function Body() {
+const Body = () => {
   const [book, setBook] = useState([]);
   const dispatch = useDispatch();
   dispatch(getbooks(book));
@@ -40,6 +40,6 @@ function Body() {
       ))}
     </div>
   );
-}
+};
 
 export default Body;

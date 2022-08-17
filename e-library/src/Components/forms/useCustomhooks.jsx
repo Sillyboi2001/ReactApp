@@ -11,6 +11,9 @@ const useCustomHooks = () => {
   const onChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
-  return [value, setValue, onChange];
+  const onChangeFiles = (e) => {
+    setValue({ ...value, fileUrl: e.target.files[0] });
+  };
+  return [value, onChange, onChangeFiles];
 };
 export default useCustomHooks;

@@ -7,15 +7,9 @@ import useCustomHooks from './useCustomhooks';
 
 export const bookData = {};
 
-export function CreateBook() {
-  const [book, setBook] = useCustomHooks({});
+export const CreateBook = () => {
+  const [book, formValue, bookfile] = useCustomHooks({});
 
-  const formValue = (e) => {
-    setBook({ ...book, [e.target.name]: e.target.value });
-  };
-  const bookfile = (e) => {
-    setBook({ ...book, [e.target.name]: e.target.files[0] });
-  };
   const redirect = useNavigate();
 
   const submit = async (e) => {
@@ -32,13 +26,6 @@ export function CreateBook() {
           'Content-Type': 'multipart/form-data',
           authorization: userInfo.token,
         },
-      });
-      setBook({
-        title: '',
-        price: '',
-        author: '',
-        description: '',
-        fileUrl: '',
       });
       window.alert('Book has been created successfully');
       redirect('/homepage');
@@ -77,4 +64,4 @@ export function CreateBook() {
       </form>
     </div>
   );
-}
+};

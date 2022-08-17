@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentToken, username, credentials } from './reducer';
 import { userInfo } from '../Components/homepage/body';
 
-function RequireAuth() {
+const RequireAuth = () => {
   const dispatch = useDispatch();
   dispatch(username(userInfo.username));
   dispatch(credentials(userInfo.token));
@@ -16,6 +16,6 @@ function RequireAuth() {
       ? <Outlet />
       : <Navigate to="/" state={{ from: location }} replace />
   );
-}
+};
 
 export default RequireAuth;

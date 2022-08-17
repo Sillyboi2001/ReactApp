@@ -7,19 +7,17 @@ import Homepage from './homepage';
 import AddBook from './Createbook';
 import RequireAuth from './counter/requireAuth';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route element={<RequireAuth />}>
-          <Route path="/homepage" element={<Homepage />} />
-          <Route path="/addbook" element={<AddBook />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
+const App = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Signin />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route element={<RequireAuth />}>
+        <Route path="/homepage" element={<Homepage />} />
+        <Route path="/addbook" element={<AddBook />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;
