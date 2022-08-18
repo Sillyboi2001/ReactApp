@@ -1,40 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import axios from '../api/axios';
+import useSignin from '../hooks/useInput';
+import useSignupForm from '../hooks/useSignup';
 
 export const Form = () => {
-  const userRef = useRef();
-  const errRef = useRef();
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errMessage, setErrMessage] = useState('');
-  const [success, setSuccess] = useState(false);
-
-  useEffect(() => {
-    setErrMessage('');
-  }, [email, password]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('/api/users/signin', { email, password });
-      setEmail('');
-      setPassword('');
-      setSuccess(true);
-      localStorage.setItem('user-info', JSON.stringify(response.data));
-    } catch (err) {
-      if (err.response.status === 400) {
-        setErrMessage('User input required');
-      } else if (err.response.status === 404) {
-        setErrMessage('Invalid credentials');
-      } else {
-        setErrMessage("User doesn't exist. Please signup");
-      }
-    }
-    errRef.current.focus();
-  };
-
+  const [formChange, error, submitForm, success, errRef] = useSignin();
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
@@ -46,16 +16,16 @@ export const Form = () => {
         </div>
       ) : (
         <div>
-          <p ref={errRef} className={errMessage ? 'errmsg' : 'offscreen'} aria-live="assertive">{errMessage}</p>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={submitForm}>
+            <p ref={errRef} className={error ? 'errmsg' : 'offscreen'} aria-live="assertive">{error}</p>
             <h2>Sign in</h2>
             <div className="input-box">
               <i className="fas fa-envelope" aria-hidden="true" />
-              <input type="email" ref={userRef} value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
+              <input type="email" name="email" placeholder="Email" onChange={formChange} required />
             </div>
             <div className="input-box">
               <i className="fa fa-unlock-alt" aria-hidden="true" />
-              <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
+              <input type="password" name="password" placeholder="Password" onChange={formChange} required />
             </div>
             <div className="input-box">
               <input type="submit" name="" value="Login" />
@@ -71,41 +41,7 @@ export const Form = () => {
 };
 
 export const Form2 = () => {
-  const errRef = useRef();
-
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errMessage, setErrMessage] = useState('');
-  const [success, setSuccess] = useState(false);
-
-  useEffect(() => {
-    setErrMessage('');
-  }, [username, email, password]);
-
-  const signUp = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('/api/users/signup', {
-        username,
-        email,
-        password,
-      });
-      setUsername('');
-      setEmail('');
-      setPassword('');
-      setSuccess(true);
-      localStorage.setItem('user-info', JSON.stringify(response.data));
-    } catch (err) {
-      if (err.response.status === 409) {
-        setErrMessage('User Already Exist. Please Login');
-      } else {
-        setErrMessage('Failed to create user');
-      }
-      errRef.current.focus();
-    }
-  };
-
+  const [signUp, formChange, errorMes, success, errRef] = useSignupForm();
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
@@ -117,19 +53,19 @@ export const Form2 = () => {
         </div>
       ) : (
         <form onSubmit={signUp}>
-          <p ref={errRef} className={errMessage ? 'errmsg' : 'offscreen'} aria-live="assertive">{errMessage}</p>
+          <p ref={errRef} className={errorMes ? 'errmsg' : 'offscreen'} aria-live="assertive">{errorMes}</p>
           <h2>Sign up</h2>
           <div className="input-box">
             <i className="fa fa-user" aria-hidden="true" />
-            <input type="text" value={username} placeholder="Username" onChange={(e) => setUsername(e.target.value)} required />
+            <input type="text" name="username" placeholder="Username" onChange={formChange} required />
           </div>
           <div className="input-box">
             <i className="fas fa-envelope" aria-hidden="true" />
-            <input type="email" value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
+            <input type="email" name="email" placeholder="Email" onChange={formChange} required />
           </div>
           <div className="input-box">
             <i className="fa fa-unlock-alt" aria-hidden="true" />
-            <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
+            <input type="password" name="password" placeholder="Password" onChange={formChange} required />
           </div>
           <div className="input-box">
             <input type="submit" value="Signup" />
