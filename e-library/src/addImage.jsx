@@ -1,16 +1,16 @@
 import React from 'react';
 import './Components/scss/App.scss';
-import { Form } from './Components/forms/input';
+import Images from './Components/images/Images';
 
-const Signin = () => (
+const AddImage = () => (
   <div className="App">
     <div className="header">
       <header>E-LIBRARY</header>
     </div>
     <div className="form">
-      <Form />
+      <Images />
     </div>
   </div>
 );
 
-export default Signin;
+export default AddImage;

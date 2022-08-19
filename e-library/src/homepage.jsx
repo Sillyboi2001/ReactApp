@@ -1,13 +1,12 @@
-import Body from "./Components/homepage/body";
-import Navbar from "./Components/homepage/navbar";
+import React from 'react';
+import Body from './Components/homepage/Body';
+import Navbar from './Components/homepage/Navbar';
 
-const Homepage = () => {
-    return (
-        <div className="App">
-            <Navbar />
-            <Body />
-        </div>
-    );
-}
+const Homepage = () => (
+  <div className="App">
+    <Navbar />
+    <Body />
+  </div>
+);
 
 export default Homepage;
