@@ -4,7 +4,13 @@ import useSignin from '../hooks/useInput';
 import useSignupForm from '../hooks/useSignup';
 
 export const Form = () => {
-  const [formChange, error, submitForm, success, errRef] = useSignin();
+  const {
+    formChange,
+    errMessage,
+    handleSubmit,
+    success,
+    errRef,
+  } = useSignin();
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
@@ -16,8 +22,8 @@ export const Form = () => {
         </div>
       ) : (
         <div>
-          <form onSubmit={submitForm}>
-            <p ref={errRef} className={error ? 'errmsg' : 'offscreen'} aria-live="assertive">{error}</p>
+          <form onSubmit={handleSubmit}>
+            <p ref={errRef} className={errMessage ? 'errmsg' : 'offscreen'} aria-live="assertive">{errMessage}</p>
             <h2>Sign in</h2>
             <div className="input-box">
               <i className="fas fa-envelope" aria-hidden="true" />
@@ -41,7 +47,9 @@ export const Form = () => {
 };
 
 export const Form2 = () => {
-  const [signUp, formChange, errorMes, success, errRef] = useSignupForm();
+  const {
+    signUp, formChange, errMessage, success, errRef,
+  } = useSignupForm();
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
@@ -53,7 +61,7 @@ export const Form2 = () => {
         </div>
       ) : (
         <form onSubmit={signUp}>
-          <p ref={errRef} className={errorMes ? 'errmsg' : 'offscreen'} aria-live="assertive">{errorMes}</p>
+          <p ref={errRef} className={errMessage ? 'errmsg' : 'offscreen'} aria-live="assertive">{errMessage}</p>
           <h2>Sign up</h2>
           <div className="input-box">
             <i className="fa fa-user" aria-hidden="true" />

@@ -14,10 +14,10 @@ const useBookInputField = () => {
     description: '',
     fileUrl: '',
   });
-  const onChange = (e) => {
+  const formInput = (e) => {
     setBook({ ...book, [e.target.name]: e.target.value });
   };
-  const onChangeFiles = (e) => {
+  const fileInput = (e) => {
     setBook({ ...book, fileUrl: e.target.files[0] });
   };
   const redirect = useNavigate();
@@ -55,6 +55,8 @@ const useBookInputField = () => {
       }
     }
   };
-  return [onChange, onChangeFiles, submit];
+  return {
+    formInput, fileInput, submit,
+  };
 };
 export default useBookInputField;

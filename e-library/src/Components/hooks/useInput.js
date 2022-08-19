@@ -36,7 +36,9 @@ const useInput = () => {
     }
     errRef.current.focus();
   };
-  return [formChange, errMessage, handleSubmit, success, errRef];
+  return {
+    formChange, errMessage, handleSubmit, success, errRef,
+  };
 };
 
 export default useInput;

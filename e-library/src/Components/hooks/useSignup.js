@@ -36,6 +36,8 @@ const useSignupForm = () => {
       errRef.current.focus();
     }
   };
-  return [signUp, formChange, errMessage, success, errRef];
+  return {
+    signUp, formChange, errMessage, success, errRef,
+  };
 };
 export default useSignupForm;
