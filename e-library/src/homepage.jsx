@@ -1,6 +1,6 @@
 import React from 'react';
-import Body from './Components/homepage/body';
-import Navbar from './Components/homepage/navbar';
+import Body from './Components/homepage/Body';
+import Navbar from './Components/homepage/Navbar';
 
 const Homepage = () => (
   <div className="App">

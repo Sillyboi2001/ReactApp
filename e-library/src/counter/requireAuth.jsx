@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentToken, username, credentials } from './reducer';
-import { userInfo } from '../Components/homepage/body';
+import { userInfo } from '../Components/hooks/useDisplayBooks';
 
 const RequireAuth = () => {
   const dispatch = useDispatch();

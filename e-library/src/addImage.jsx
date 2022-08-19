@@ -1,6 +1,6 @@
 import React from 'react';
 import './Components/scss/App.scss';
-import Images from './Components/images/images';
+import Images from './Components/images/Images';
 
 const AddImage = () => (
   <div className="App">

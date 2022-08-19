@@ -1,11 +1,11 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Signin from './signin';
-import Signup from './signup';
-import Homepage from './homepage';
+import Signin from './Signin';
+import Signup from './Signup';
+import Homepage from './Homepage';
 import AddBook from './Createbook';
-import RequireAuth from './counter/requireAuth';
+import RequireAuth from './counter/RequireAuth';
 
 const App = () => (
   <BrowserRouter>

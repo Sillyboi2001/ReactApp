@@ -1,31 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import axios from '../api/axios';
-import { getbooks } from '../../counter/bookReducer';
-
-export const userInfo = JSON.parse(localStorage.getItem('user-info'));
+import React from 'react';
+import { useDisplayBook } from '../hooks/useDisplayBooks';
 
 const Body = () => {
-  const [book, setBook] = useState([]);
-  const dispatch = useDispatch();
-  dispatch(getbooks(book));
-
-  useEffect(() => {
-    const getBooks = async () => {
-      try {
-        const response = await axios.get('api/books', {
-          headers: {
-            authorization: userInfo.token,
-          },
-        });
-        return setBook(response.data.books);
-      } catch (err) {
-        return err;
-      }
-    };
-    getBooks();
-  }, []);
-
+  const { book } = useDisplayBook();
   return (
     <div className="container1">
       <div className="row">

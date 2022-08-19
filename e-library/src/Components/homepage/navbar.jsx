@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import '../scss/homepage.scss';
-import { userInfo } from './body';
+import { userInfo } from '../hooks/useDisplayBooks';
 
 const Navbar = () => (
   <div className="container">

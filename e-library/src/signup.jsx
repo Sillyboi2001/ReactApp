@@ -1,7 +1,7 @@
 import React from 'react';
 import './Components/scss/App.scss';
 import { Form2 } from './Components/forms/input';
-import Header from './Components/homepage/header';
+import Header from './Components/homepage/Header';
 
 const Signup = () => (
   <div className="App">
