@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useDisplayBook } from '../hooks/useDisplayBooks';
 
-const Body = () => {
+export const bookId = {};
+
+export const Body = () => {
   const { book } = useDisplayBook();
   return (
     <div className="container1">
@@ -12,11 +15,14 @@ const Body = () => {
       {book.map((item) => (
         <div className="img">
           <img src={item.imageUrl} alt="" />
-          <button type="button">BORROW</button>
+          <Link to="/addImage" onClick={() => { bookId.id = item.id; }}>
+            <button type="button">ADD IMAGE</button>
+          </Link>
+          <Link to="/borrowBook" onClick={() => { bookId.id = item.id; }}>
+            <button type="button">BORROW</button>
+          </Link>
         </div>
       ))}
     </div>
   );
 };
-
-export default Body;
