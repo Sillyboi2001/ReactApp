@@ -6,9 +6,9 @@ import { bookId } from '../homepage/Body';
 import { getbooks } from '../../counter/bookReducer';
 
 const useBorrowBook = () => {
-  const [bookid, setBookid] = useState([]);
+  const [book, setBook] = useState([]);
   const dispatch = useDispatch();
-  dispatch(getbooks(bookid));
+  dispatch(getbooks(book));
   useEffect(() => {
     const getBooks = async () => {
       try {
@@ -17,13 +17,14 @@ const useBorrowBook = () => {
             authorization: userInfo.token,
           },
         });
-        return setBookid(response.data.item);
+        return setBook(response.data.item);
       } catch (err) {
         return err;
       }
     };
     getBooks();
   }, []);
+
   const selectbook = async (e) => {
     e.preventDefault();
     try {
@@ -42,6 +43,6 @@ const useBorrowBook = () => {
       }
     }
   };
-  return { bookid, selectbook };
+  return { book, selectbook };
 };
 export default useBorrowBook;

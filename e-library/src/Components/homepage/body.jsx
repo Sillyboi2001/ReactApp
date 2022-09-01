@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../button/Button';
 import { useDisplayBook } from '../hooks/useDisplayBooks';
 
 export const bookId = {};
@@ -19,7 +20,7 @@ export const Body = () => {
             <button type="button">ADD IMAGE</button>
           </Link>
           <Link to="/borrowBook" onClick={() => { bookId.id = item.id; }}>
-            <button type="button">BORROW</button>
+            <Button />
           </Link>
         </div>
       ))}
