@@ -1,5 +1,5 @@
 import React from 'react';
-import { Body } from './Components/homepage/Body';
+import Body from './Components/homepage/Body';
 import Navbar from './Components/homepage/Navbar';
 
 const Homepage = () => (

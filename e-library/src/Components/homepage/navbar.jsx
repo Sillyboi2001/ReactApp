@@ -10,7 +10,7 @@ const Navbar = () => (
     <div className="dropdown">
       <button type="button" className="dropbtn">{userInfo.username}</button>
       <div className="dropdown-content">
-        <Link to="./profile.html">My profile</Link>
+        <Link to="../returnbook">Book History</Link>
         <Link to="../addbook">Add a book</Link>
         <Link to="www.h.com">Inbox</Link>
         <Link to="www.h.com">Notifications</Link>

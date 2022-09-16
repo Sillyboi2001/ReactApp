@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import FormData from 'form-data';
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from '../api/axios';
 import { userInfo } from './useDisplayBooks';
-import { bookId } from '../homepage/Body';
 
 const useImageCover = () => {
-  const redirect = useNavigate();
+  const params = useParams();
+  const [success, setSuccess] = useState(false);
+  const [message, setMessage] = useState('');
   const [image, setImage] = useState({
     imageUrl: '',
   });
@@ -15,7 +16,7 @@ const useImageCover = () => {
     form.append('img', image.imageUrl);
     e.preventDefault();
     try {
-      const response = await axios.put(`api/books/${bookId.id}/imageCover`, form, {
+      const response = await axios.put(`api/books/${params.id}/imageCover`, form, {
         headers: {
           authorization: userInfo.token,
         },
@@ -23,10 +24,11 @@ const useImageCover = () => {
       setImage({
         imageUrl: '',
       });
-      window.alert(response.data.message);
-      redirect('/homepage');
+      setMessage(response.data.message);
+      setSuccess(true);
     } catch (err) {
-      window.alert('Failed to upload image');
+      setMessage('Failed to upload image');
+      setSuccess(true);
     }
   };
 
@@ -34,7 +36,9 @@ const useImageCover = () => {
     setImage({ ...image, imageUrl: e.target.files[0] });
   };
 
-  return { handleSubmit, inputChange };
+  return {
+    handleSubmit, inputChange, message, success,
+  };
 };
 
 export default useImageCover;

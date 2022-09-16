@@ -1,12 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Button from '../button/Button';
 import { useDisplayBook } from '../hooks/useDisplayBooks';
+import useBookId from '../hooks/useBookId';
 
-export const bookId = {};
-
-export const Body = () => {
+const Body = () => {
   const { book } = useDisplayBook();
+  const { BookDetails, ImageDetails } = useBookId();
   return (
     <div className="container1">
       <div className="row">
@@ -16,14 +14,12 @@ export const Body = () => {
       {book.map((item) => (
         <div className="img">
           <img src={item.imageUrl} alt="" />
-          <Link to="/addImage" onClick={() => { bookId.id = item.id; }}>
-            <button type="button">ADD IMAGE</button>
-          </Link>
-          <Link to="/borrowBook" onClick={() => { bookId.id = item.id; }}>
-            <Button />
-          </Link>
+          <button type="button" onClick={() => ImageDetails(item.id)}>ADD IMAGE</button>
+          <button type="button" onClick={() => BookDetails(item.id)}>BORROW BOOK</button>
         </div>
       ))}
     </div>
   );
 };
+
+export default Body;
