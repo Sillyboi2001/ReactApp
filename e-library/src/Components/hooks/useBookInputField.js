@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import FormData from 'form-data';
 import axios from '../api/axios';
 import { userInfo } from './useDisplayBooks';
 
-export const bookData = {};
-
 const useBookInputField = () => {
+  const [message, setMessage] = useState('');
+  const [success, setSuccess] = useState(false);
   const [book, setBook] = useState({
     title: '',
     price: '',
@@ -20,7 +19,6 @@ const useBookInputField = () => {
   const fileInput = (e) => {
     setBook({ ...book, fileUrl: e.target.files[0] });
   };
-  const redirect = useNavigate();
 
   const submit = async (e) => {
     e.preventDefault();
@@ -44,19 +42,17 @@ const useBookInputField = () => {
         description: '',
         fileUrl: '',
       });
-      window.alert('Book has been created successfully');
-      redirect('/homepage');
-      bookData.file = response.data.createbook.fileUrl;
-      bookData.id = response.data.createbook.id;
+      setMessage(response.data.message);
+      setSuccess(true);
     } catch (err) {
       if (err) {
-        window.alert('Failed to create book. Please try again');
-        redirect('/homepage');
+        setMessage('Failed to create book. Please try again');
+        setSuccess(true);
       }
     }
   };
   return {
-    formInput, fileInput, submit,
+    formInput, fileInput, submit, success, message,
   };
 };
 export default useBookInputField;

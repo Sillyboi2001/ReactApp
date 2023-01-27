@@ -1,8 +1,10 @@
 import React from 'react';
 import { useDisplayBook } from '../hooks/useDisplayBooks';
+import useBookId from '../hooks/useBookId';
 
 const Body = () => {
   const { book } = useDisplayBook();
+  const { BookDetails, ImageDetails } = useBookId();
   return (
     <div className="container1">
       <div className="row">
@@ -12,7 +14,8 @@ const Body = () => {
       {book.map((item) => (
         <div className="img">
           <img src={item.imageUrl} alt="" />
-          <button type="button">BORROW</button>
+          <button type="button" onClick={() => ImageDetails(item.id)}>ADD IMAGE</button>
+          <button type="button" onClick={() => BookDetails(item.id)}>BORROW BOOK</button>
         </div>
       ))}
     </div>
